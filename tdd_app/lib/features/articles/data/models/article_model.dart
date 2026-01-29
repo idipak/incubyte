@@ -6,6 +6,7 @@ class ArticleModel extends Article {
     required super.userId,
     required super.title,
     required super.body,
+    super.isBookmarked,
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {

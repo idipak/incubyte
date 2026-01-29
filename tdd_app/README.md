@@ -13,5 +13,21 @@ A Flutter application that fetches and displays articles using Clean Architectur
 ## Getting Started
 
 1.  Clone the repository.
+
 2.  Run `flutter pub get`.
+
 3.  Run `flutter run`.
+
+
+
+## Testing
+
+
+
+To run the tests:
+
+```bash
+
+flutter test
+
+```
