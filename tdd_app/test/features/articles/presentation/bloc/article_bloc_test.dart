@@ -32,28 +32,40 @@ void main() {
   blocTest<ArticleBloc, ArticleState>(
     'should emit [ArticleLoading, ArticleLoaded] when data is gotten successfully',
     build: () {
-      when(mockGetArticles(any))
-          .thenAnswer((_) async => (null, tArticles));
+      when(mockGetArticles(any)).thenAnswer((_) async => (null, tArticles));
       return bloc;
     },
     act: (bloc) => bloc.add(FetchArticles()),
-    expect: () => [
-      ArticleLoading(),
-      const ArticleLoaded(tArticles),
-    ],
+    expect: () => [ArticleLoading(), const ArticleLoaded(tArticles)],
   );
 
   blocTest<ArticleBloc, ArticleState>(
     'should emit [ArticleLoading, ArticleError] when getting data fails',
     build: () {
-      when(mockGetArticles(any))
-          .thenAnswer((_) async => (const ServerFailure('Server Failure'), null));
+      when(
+        mockGetArticles(any),
+      ).thenAnswer((_) async => (const ServerFailure('Server Failure'), null));
       return bloc;
     },
     act: (bloc) => bloc.add(FetchArticles()),
+    expect: () => [ArticleLoading(), const ArticleError('Server Failure')],
+  );
+
+  blocTest<ArticleBloc, ArticleState>(
+    'should toggle selection status of article',
+    build: () {
+      when(mockGetArticles(any)).thenAnswer((_) async => (null, tArticles));
+      return bloc;
+    },
+    act: (bloc) async {
+      bloc.add(FetchArticles());
+      await Future.delayed(Duration.zero);
+      bloc.add(const BookmarkArticle(1));
+    },
     expect: () => [
       ArticleLoading(),
-      const ArticleError('Server Failure'),
+      const ArticleLoaded(tArticles),
+      ArticleLoaded([tArticles[0].copyWith(isBookmarked: true)]),
     ],
   );
 }

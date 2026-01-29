@@ -15,6 +15,22 @@ class Article extends Equatable {
     this.isBookmarked = false,
   });
 
+  Article copyWith({
+    int? id,
+    int? userId,
+    String? title,
+    String? body,
+    bool? isBookmarked,
+  }) {
+    return Article(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      title: title ?? this.title,
+      body: body ?? this.body,
+      isBookmarked: isBookmarked ?? this.isBookmarked,
+    );
+  }
+
   @override
   List<Object?> get props => [id, userId, title, body, isBookmarked];
 }

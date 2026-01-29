@@ -22,5 +22,18 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
         emit(const ArticleError('Unexpected error'));
       }
     });
+
+    on<BookmarkArticle>((event, emit) {
+      final currentState = state;
+      if (currentState is ArticleLoaded) {
+        final updatedArticles = currentState.articles.map((article) {
+          if (article.id == event.articleId) {
+            return article.copyWith(isBookmarked: !article.isBookmarked);
+          }
+          return article;
+        }).toList();
+        emit(ArticleLoaded(updatedArticles));
+      }
+    });
   }
 }

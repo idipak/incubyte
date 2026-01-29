@@ -15,10 +15,17 @@ class ArticleModel extends Article {
       userId: json['userId'],
       title: json['title'],
       body: json['body'],
+      isBookmarked: json['isBookmarked'] ?? false,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'userId': userId, 'title': title, 'body': body};
+    return {
+      'id': id,
+      'userId': userId,
+      'title': title,
+      'body': body,
+      'isBookmarked': isBookmarked,
+    };
   }
 }

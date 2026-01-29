@@ -8,3 +8,12 @@ abstract class ArticleEvent extends Equatable {
 }
 
 class FetchArticles extends ArticleEvent {}
+
+class BookmarkArticle extends ArticleEvent {
+  final int articleId;
+
+  const BookmarkArticle(this.articleId);
+
+  @override
+  List<Object> get props => [articleId];
+}

@@ -25,6 +25,7 @@ void main() {
           "id": 1,
           "title": "Test Title",
           "body": "Test Body",
+          "isBookmarked": true,
         };
         // act
         final result = ArticleModel.fromJson(jsonMap);
