@@ -1,16 +1,17 @@
-# tdd_app
+# Article App
 
-A new Flutter project.
+A Flutter application that fetches and displays articles using Clean Architecture, Bloc, and Dio.
+
+## Features
+
+*   **Clean Architecture:** Separated into Data, Domain, and Presentation layers.
+*   **State Management:** Uses `flutter_bloc`.
+*   **Networking:** Uses `dio` for API requests.
+*   **Dependency Injection:** Uses `get_it`.
+*   **UI:** Modern dark-themed design with custom fonts.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1.  Clone the repository.
+2.  Run `flutter pub get`.
+3.  Run `flutter run`.
