@@ -1,33 +1,47 @@
-# Article App
+# String Calculator TDD App
 
-A Flutter application that fetches and displays articles using Clean Architecture, Bloc, and Dio.
+A Flutter application implementing a String Calculator using **TDD (Test-Driven Development)**, **Clean Architecture**, and **BLoC** for state management.
 
 ## Features
 
-*   **Clean Architecture:** Separated into Data, Domain, and Presentation layers.
-*   **State Management:** Uses `flutter_bloc`.
-*   **Networking:** Uses `dio` for API requests.
-*   **Dependency Injection:** Uses `get_it`.
-*   **UI:** Modern dark-themed design with custom fonts.
+*   **String Calculator Logic**:
+    *   Adds numbers from a comma-separated string.
+    *   Supports newlines as delimiters (e.g., `1\n2,3`).
+    *   Supports custom delimiters (e.g., `//;\n1;2`).
+    *   Throws exceptions for negative numbers, listing all occurrences.
+    *   Ignores numbers greater than 1000.
+*   **Real-time Calculation**: Deboubed input handling for smooth user experience.
+*   **Clean Architecture**: Separation of concerns with Domain, and Presentation layers.
+*   **State Management**: `flutter_bloc` with `rxdart` for event transformation.
+
+## Project Structure
+
+```
+lib/
+├── features/
+│   └── string_calculator/
+│       ├── domain/
+│       │   └── string_calculator.dart  # Core Logic
+│       └── presentation/
+│           ├── bloc/                   # BLoC, Events, States
+│           └── pages/                  # UI Page
+└── main.dart                           # App Entry Point
+```
 
 ## Getting Started
 
-1.  Clone the repository.
+1.  **Get Dependencies**:
+    ```bash
+    flutter pub get
+    ```
 
-2.  Run `flutter pub get`.
+2.  **Run Tests**:
+    This project was built using TDD. Run the comprehensive test suite:
+    ```bash
+    flutter test
+    ```
 
-3.  Run `flutter run`.
-
-
-
-## Testing
-
-
-
-To run the tests:
-
-```bash
-
-flutter test
-
-```
+3.  **Run App**:
+    ```bash
+    flutter run
+    ```
